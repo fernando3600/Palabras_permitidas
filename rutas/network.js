@@ -3,7 +3,6 @@ const router = express.Router();
 const crudController = require('../controllers/crudController');
 
 
-const path = 'user';
 //Obtener la lista de palabras activas
 router.get('/', (req, res) => {
     crudController.GetData(req, res);
@@ -21,11 +20,14 @@ router.get('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
         crudController.UpdateSingleData(req, res);
     })
-//Eliminar de manera lógica una palabra
-router.delete('/:id', (req, res) => {
+//Eliminar de manera normal una palabra
+router.delete('/eliminar/:id', (req, res) => {
         crudController.DeleteData(req, res);
 });
 
-
+//Eliminar de manera lógica una palabra
+router.delete('/:id', (req, res) => {
+    crudController.DeleteDataLogic(req, res);
+});
 
 module.exports = router;
